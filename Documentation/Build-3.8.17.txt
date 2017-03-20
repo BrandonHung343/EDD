@@ -1,0 +1,65 @@
+import time
+import wiringpi
+import sys
+import PyQt5
+# This gets the Qt stuff
+
+#install these programs on your RPi when you get the chance
+
+from PyQt5.QtWidgets import *
+ 
+import mainwindow_auto
+# This is our window from QtCreator
+changing = false
+class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
+# create class for our Raspberry Pi GUI
+def changeButton(self):
+changing = True
+
+def __init__(self):
+# access variables inside of the UI's file
+ super(self.__class__, self).__init__()
+ self.setupUi(self) 
+# gets defined in the UI file
+
+
+def main():
+	app = QApplication(sys.argv)
+	#new app instance
+	form = MainWindow()
+	form.show()
+	sys.exit(app.exec_())
+	#prevent app from self-closing
+
+	wiringpi.wiringPiSetupGpio()
+	wiringpi.pinMode(16, wiringpi.GPIO.PWM_OUTPUT)
+	#sets pin 16 to PWM
+
+	wiringpi.pwmSetMode(wiringpi.GPIO.PWM_MODE_MS)
+	#sets to milliseconds
+
+	itemOne, itemTwo, itemThree, itemFour, itemFive, itemSix = none
+
+	shelfItems = {1 : itemOne, 2 : itemTwo, 3 : itemThree, 4 : itemFour, 5 : itemFive, 6 : itemSix}
+
+def pairing():
+	#if the button is pressed to change something
+	while changing == True:
+		
+def setup():
+	for i in range(6):
+		#run reader code here
+		
+	for i in shelfItems.keys():
+		index = #run RFID scanning code here, should return a sequuence of integer
+		k = index
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+  main()

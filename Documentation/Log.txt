@@ -1,0 +1,44 @@
+README:
+
+3/13/17 Have to figure out the basic skeletal pseudocode
+
+Format should look like this:
+
+dict = {num1:{'x':xOne, 'y': yOne}, etc.}
+while True:
+	int code = RFID.scan()
+	for k, v in dict.items():
+		if code = k:
+			getXPos(v, code)
+			getYPos(v, code)
+			screwActuator.setPos(xPos, yPos)
+
+
+def getXPos(list, idNum):
+	xPos = list.get('x', 0)
+	return xPos
+
+
+
+def getYPos(list, idNum):
+	yPos = list.get('y', 1)
+	return yPos
+3/15/17
+-Got RFID ID reading to work
+-Use the test3 file to scan for individual numbers
+-Record IDnums tomorrow
+-Unplug wire from RX before uploading
+-Strings of 27 numbers are produced by tag
+-First module wasn't working right, so switched out and second worked fine
+
+3/16/17
+-Make sure to upload to repo at home
+-Uploaded txt files to drive before leaving
+-Bring Rpi for tomorrow
+-Figure out where to salvage steppers 
+-Got some new code for RPI, test RFID reading 
+
+	
+	
+			
+		
