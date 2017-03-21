@@ -38,6 +38,19 @@ def getYPos(list, idNum):
 -Figure out where to salvage steppers 
 -Got some new code for RPI, test RFID reading 
 
+3/20/17
+-added code for finding position
+-split the position and numbers lists into a dictionary and a list
+-included code for opening/reading file as reference for numbers and positions
+-file format:
+	-26 digit ID, space, 1 digit x position, space, 1 digit y position
+-be sure to update the substring to reflect this 
+
+3/21/17
+-cleaned up code
+-added scan function
+-changed original "code" variable to the "ID" number variable
+
 	
 	
 			
