@@ -89,11 +89,3 @@ def scan():
 	 	break
 
 
-
-
-
-
-
-
-if __name__ == '__main__':
-  main()

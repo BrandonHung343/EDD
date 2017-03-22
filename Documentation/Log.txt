@@ -51,6 +51,14 @@ def getYPos(list, idNum):
 -added scan function
 -changed original "code" variable to the "ID" number variable
 
+3/22/17
+-got IDLE and PuTTY installed
+-got router to connect through LAN with Pi
+-bring ethernet cable and power cord for RPi
+-cleaned up scanner method
+TODO:
+-implement stepper motor (4 wire bipolar motor on raspi forums) will need a driver chip
+-implement servo code (driver chip again)
 	
 	
 			
