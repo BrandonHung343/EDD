@@ -14,8 +14,8 @@ GPIO.setmode(GPIO.BCM)
 PortRF = serial.Serial('/dev/ttyAMA0',9600)
 
 shelfItems = []
-positions = {}
-idNumFound = False
+xList = []
+yList = []
 ID= ""
 
 class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
@@ -35,28 +35,38 @@ def main():
     #form.show()
     #sys.exit(app.exec_())
     #prevent app from self-closing
-
-    #inventoryFile = open (whatever the filepath listed is, using os.path.abspath())
+    #inventoryFile = open('C:\\Users\\dbh101p4u31\\Downloads\\Crackle.txt')
     inventoryList = inventoryFile.readlines()
     #reads the storage file for each entry, puts it into list
-    for i in range (len(inventoryList)):entry = inventoryList [i]
-        positions.setdefault(entry[28], entry[31])
-        #adds x and y coordinate to positions dictionary, unless key is already there	
-        shelfItems[i] = int(entry[0:26])
+    for i in range (len(inventoryList)):
+        entry = inventoryList [i]
+        xList.insert (i, entry[27])
+        yList.insert (i, entry[30])
+    
+        #adds x and y coordinate to positions dictionary, unless key is already there
+        shelfItems.insert(i, entry[:25])
         #sets shelfItems list values to the RFID number
+    
+#working on 3
     while True:
         scan() 
         screwActuator.setPos(getXPos(positions, ID), getYPos(positions, ID))
 
 
-def getXPos(list, idNum):
-	xPos = list.get('x', 0)
-	return xPos
+def getXPos(someList, idNum):
+    for i in range (len(inventoryList)):
+        if idNum == shelfItems[i]:
+            x = i
+    xPos = someList[x]
+    return xPos
 
-def getYPos(list, idNum):
-	yPos = list.get('y', 1)
-	return yPos
-    
+def getYPos(someList, idNum):
+    for i in range (len(inventoryList)):
+        if idNum == shelfItems[i]:
+            y = i
+    yPos = someList[y]
+    return yPos
+
 def pairing():
 	#if the button is pressed to change something
 	while changing == True:

@@ -60,6 +60,10 @@ TODO:
 -implement stepper motor (4 wire bipolar motor on raspi forums) will need a driver chip
 -implement servo code (driver chip again)
 	
-	
+3/27/17
+-fixed file reader code
+-changed position dictionary to 2 lists, y and x
+-buy h-bridge
+-install GPIO on pi at home
 			
 		

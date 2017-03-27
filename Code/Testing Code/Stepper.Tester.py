@@ -17,7 +17,7 @@ GPIO.setup(coil_B_1_pin, GPIO.OUT)
 GPIO.setup(coil_B_2_pin, GPIO.OUT)
 
 GPIO.output(enable_pin, 1)
-#512 = full rotation
+#512 steps= full rotation
 def forward(delay, steps):
         for i in range(0, steps):
                 setStep(1, 0, 1, 0)
