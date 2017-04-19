@@ -11,30 +11,16 @@ from Stepper.Tester import *
 #install these programs on your RPi when you get the chance
 
 GPIO.setmode(GPIO.BCM)
-PortRF = serial.Serial('/dev/ttyAMA0',9600)
+PortRF = serial.Serial('/dev/ttyS0',9600)
 
 shelfItems = []
 xList = []
 yList = []
 ID= ""
 
-class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
-# create class for our Raspberry Pi GUI
-
-def __init__(self):
-# access variables inside of the UI's file
- super(self.__class__, self).__init__()
- self.setupUi(self) 
-# gets defined in the UI file
-
-
 def main():
-    #app = QApplication(sys.argv)
-    #new app instance
-    #form = MainWindow()
-    #form.show()
-    #sys.exit(app.exec_())
-    #prevent app from self-closing
+    stepper1 = Stepper(4, 17, 23, 24, 18)
+    stepper2 = Stepper()
     #inventoryFile = open('C:\\Users\\dbh101p4u31\\Downloads\\Crackle.txt')
     inventoryList = inventoryFile.readlines()
     #reads the storage file for each entry, puts it into list
@@ -49,28 +35,20 @@ def main():
     
 #working on 3
     while True:
-        scan() 
-        screwActuator.setPos(getXPos(positions, ID), getYPos(positions, ID))
+        index = scan() 
+        setPos(getXPos(index), getYPos(index))
+        
 
 
-def getXPos(someList, idNum):
-    for i in range (len(inventoryList)):
-        if idNum == shelfItems[i]:
-            x = i
-    xPos = someList[x]
-    return xPos
+def getXPos(indexValue):
+    return xList[indexValue]
 
-def getYPos(someList, idNum):
-    for i in range (len(inventoryList)):
-        if idNum == shelfItems[i]:
-            y = i
-    yPos = someList[y]
-    return yPos
+def getYPos(indexValue):
+    return yList[indexValue]
 
 def pairing():
 	#if the button is pressed to change something
 	while changing == True:
-
 
 def scan():
     while True:
@@ -82,15 +60,13 @@ def scan():
             print ID
             for i in range(len(shelfItems)):
                 if ID == shelfItems[i]:
-                    ID = str(shelfItems[i])
+                    return i
                     break
-                else:
-                    ID = str(0)
-            if ID != '0':
-                return ID
-                break
-            
-def setPos(xPos, yPos):
+       
+def setPos(xPos, yPos): 
+    stepperX.forward(10, xPos*512)
+    stepperY.forward(10, yPos*512)
+    
     
     
     

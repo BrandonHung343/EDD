@@ -5,7 +5,7 @@ import serial
 idNums = []
 count = 0
 
-PortRF = serial.Serial('/dev/ttyAMA0',9600)
+PortRF = serial.Serial('/dev/ttyS0',9600)
 while True:
     ID = ""
     read_byte = PortRF.read()
