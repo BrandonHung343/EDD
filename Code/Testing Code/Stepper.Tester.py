@@ -49,3 +49,9 @@ class Stepper (object):
                 GPIO.output(coil_A_2_pin, w2)
                 GPIO.output(coil_B_1_pin, w3)
                 GPIO.output(coil_B_2_pin, w4)
+
+
+def main():
+        stepper1 = Stepper(4, 17, 23, 24, 18)
+        stepper1.forward(10, 512)
+        
