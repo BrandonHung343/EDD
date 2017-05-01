@@ -5,7 +5,7 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 class Stepper (object):
-        def __init__ (self, pin1, pin2, pin3, pin4, enable):
+        def __init__ (self, pin1, pin2, pin3, pin4, enable1, enable2):
                 self.enable = enable
                 self.pin1 = pin1
                 self.pin2 = pin2
@@ -18,7 +18,9 @@ class Stepper (object):
                 GPIO.setup(pin3, GPIO.OUT)
                 GPIO.setup(pin4, GPIO.OUT)
 
-                GPIO.output(enable, 1)
+                GPIO.output(enable1, 1)
+                GPIO.output(enable2, 1)
+                
 
 #512 steps= full rotation
         def forward(delay, steps):
@@ -52,6 +54,6 @@ class Stepper (object):
 
 
 def main():
-        stepper1 = Stepper(4, 17, 23, 24, 18)
+        stepper1 = Stepper(23, 24, 26, 21, 18, 22)
         stepper1.forward(10, 512)
         
